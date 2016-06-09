@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class CssSelectors {
 
 	public static void main(String[] args){
-		//hi
+		
 		WebDriver driver = new FirefoxDriver();
 		driver.get("http://rediff.com");
 		driver.manage().window().maximize();
