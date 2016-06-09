@@ -12,5 +12,11 @@ public class CssSelectors {
 		driver.get("http://rediff.com");
 		driver.manage().window().maximize();
 		driver.findElement(By.linkText("Sign in")).click();
+		//tagName[attributename='attributeValue']
+    	//driver.findElement(By.cssSelector("input[id='login1']")).sendKeys("sally"); one property
+		//driver.findElement(By.cssSelector("input[id='login1'][name='login']")).sendKeys("two properties");
+		driver.findElement(By.cssSelector("#login1")).sendKeys("shortcut");
+		driver.findElement(By.cssSelector("#password")).sendKeys("sally");
+
 	}
 }
