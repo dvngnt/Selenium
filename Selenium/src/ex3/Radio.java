@@ -1,6 +1,5 @@
 package ex3;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,14 +18,14 @@ public class Radio {
 		driver.manage().window().maximize();
 		List<WebElement> list = driver.findElements(By.name("group1"));
 		for(int i = 0; i < list.size(); i++){
-			if(list.get(i).getAttribute("checked") == null){ // null or true
+			if(list.get(i).isSelected() == false){ // null or true
 				list.get(i).click();
-				Thread.sleep(3000);
+				Thread.sleep(2000);
 			}
 		}
 		
 		for(int i = 0; i < list.size(); i++){
-			if(list.get(i).getAttribute("checked") == null){ // null or true
+			if(list.get(i).isSelected() == false){ // null or true
 				System.out.println(list.get(i).getAttribute("value"));
 				Thread.sleep(3000);
 			}
