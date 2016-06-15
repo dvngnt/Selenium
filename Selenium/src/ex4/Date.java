@@ -9,7 +9,7 @@ public class Date {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\dgantt2\\Downloads\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://www.tripadvisor.com/");
@@ -24,6 +24,7 @@ public class Date {
 			 boolean found = false;
 			 String want = "October 2016";
 			 while(found == false){
+				 Thread.sleep(100);
 				 List<WebElement> list1 = driver.findElements(By.className("caption"));
 				 
 
@@ -31,6 +32,7 @@ public class Date {
 					 found = true;
 				 }
 				 else{
+					 
 					 driver.findElement(By.cssSelector(".next.sprite-date_picker-btnRightIdle")).click();;
 					 
 				 }
