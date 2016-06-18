@@ -1,5 +1,6 @@
 package ex5;
 
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 public class LoginTest {
@@ -14,6 +15,7 @@ public class LoginTest {
 	@Test
 	public void loginViaFacebook(){
 		System.out.println("login via Facebook");
+		throw new SkipException("facebook not implemented");
 	}
 
 	@Test

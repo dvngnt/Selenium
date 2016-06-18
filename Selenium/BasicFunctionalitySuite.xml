@@ -4,7 +4,6 @@
   <test verbose="2" name="Basic Tests">
     <classes>
       <class name="ex5.LoginTest"/>
-      <class name="ex5.SignoutTest"/>
     </classes>
   </test> <!-- Default test -->
 </suite> <!-- Default suite -->
