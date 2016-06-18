@@ -24,7 +24,7 @@ public class Date {
 			 boolean found = false;
 			 String want = "October 2016";
 			 while(found == false){
-				 Thread.sleep(100);
+				 Thread.sleep(300);
 				 List<WebElement> list1 = driver.findElements(By.className("caption"));
 				 
 

@@ -19,7 +19,7 @@ public class Upload {
 		
 		
 		try {
-			// send keys one way driver.findElement(By.id("the_file")).sendKeys("C:\\Users\\Public\\Pictures\\Sample Pictures\\Penguins.jpg");
+			driver.findElement(By.id("the_file")).sendKeys("C:\\Users\\Public\\Pictures\\Sample Pictures\\Penguins.jpg");
 			
 			
 		} 
