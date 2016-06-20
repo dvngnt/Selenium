@@ -1,20 +1,22 @@
 package ex5;
 
+import org.junit.Assert;
 import org.testng.annotations.Test;
 
 public class TestPriority {
 
-	@Test(priority=1)
+	@Test()
 	public void login(){
 		System.out.println("logged in");
+		Assert.assertEquals(1,2);
 	}
 
-	@Test(priority=2)
+	@Test(dependsOnMethods={"login"})
 	public void navigation(){
 		System.out.println("navigate");
 	}
 
-	@Test(priority=3)
+	@Test(dependsOnMethods={"login","navigation"})
 	public void logout(){
 		System.out.println("logged out");
 	}
