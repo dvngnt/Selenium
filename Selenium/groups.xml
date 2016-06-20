@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Group Test">
+	<test verbose="2" name = "MyTest">
+	<groups>
+		<run>
+			<include name = "performance" />
+			<exclude name = "regression" />
+		
+		</run>
+	</groups>
+	
+	<classes>
+		<class name = "ex5.Groups" />
+		</classes>
+		
+		</test>
+</suite><!-- Default suite -->
