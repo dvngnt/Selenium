@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Functional TestSuite">
+<parameter name ="email" value = "d@umd.edu" />
   <test verbose="2" name="Basic Tests">
     <classes>
-      <class name="ex5.LoginTest"/>
+      <class name="ex5.NGParameters"/>
     </classes>
   </test> <!-- Default test -->
 </suite> <!-- Default suite -->
