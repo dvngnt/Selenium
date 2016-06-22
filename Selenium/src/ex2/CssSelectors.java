@@ -29,12 +29,15 @@ public class CssSelectors implements Runnable{
 		
 		ChromeDriverManager.getInstance().setup();
 		InternetExplorerDriverManager.getInstance().setup();
+		DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+		capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
 		drivers = new Stack<WebDriver>();
 	    WebDriver driver = new FirefoxDriver();
 	    drivers.push(driver);
 		WebDriver driver1 = new ChromeDriver();
 		drivers.push(driver1);
-		InternetExplorerDriver driver2 = new InternetExplorerDriver();
+		InternetExplorerDriver driver2 = new InternetExplorerDriver(capabilities);
+		driver2.manage().deleteAllCookies();
 		drivers.push(driver2);
 		
 		for(int i = 0; i <= CssSelectors.drivers.size(); i++){
@@ -64,7 +67,6 @@ public class CssSelectors implements Runnable{
 	
 			driver.findElement(By.cssSelector("#searchbox")).sendKeys("tokyo");
 			
-			driver.findElement(By.tagName("body")).click();
 			driver.findElement(By.cssSelector("#date_picker_in_1")).click();
 			 boolean found = false;
 			 String want = "October 2016";
