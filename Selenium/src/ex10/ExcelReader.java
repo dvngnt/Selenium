@@ -128,7 +128,7 @@ public class ExcelReader {
 		System.out.println(reader.getSheetColumns("SignUpTest"));
 		System.out.println(reader.getCellData("SignUpTest",1,2));
 		System.out.println(reader.getCellData("LoginTest", "password", 2));
-		reader.setCellData("LoginTest", 1, 1, "ccccc");
+		reader.setCellData("LoginTest", 1, 1, "hello");
 
 	}
 }

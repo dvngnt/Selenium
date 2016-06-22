@@ -18,7 +18,7 @@ public class Property {
 		fs = new FileInputStream(System.getProperty("user.dir") + "\\src\\ex10\\config.properties");
 		property = new Properties();
 		property.load(fs);
-		System.out.println(property.getProperty("name"));
+		System.out.println(property.getProperty("url"));
 
 	}
 
