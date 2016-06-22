@@ -1,6 +1,7 @@
 package ex2;
 
 import java.util.List;
+import java.util.Stack;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -8,26 +9,49 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.MarionetteDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import io.github.bonigarcia.wdm.Architecture;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
 import io.github.bonigarcia.wdm.MarionetteDriverManager;
 
 
 public class CssSelectors implements Runnable{
+	public static Stack<WebDriver> drivers = null;
+	
+	
 
 	public static void main(String[] args) throws InterruptedException{
+		
 		ChromeDriverManager.getInstance().setup();
-		MarionetteDriverManager.getInstance().setup();
 		InternetExplorerDriverManager.getInstance().setup();
-		MarionetteDriver driver1 = new MarionetteDriver();
+		drivers = new Stack<WebDriver>();
+	    WebDriver driver = new FirefoxDriver();
+	    drivers.push(driver);
+		WebDriver driver1 = new ChromeDriver();
+		drivers.push(driver1);
+		InternetExplorerDriver driver2 = new InternetExplorerDriver();
+		drivers.push(driver2);
+		
+		for(int i = 0; i <= CssSelectors.drivers.size(); i++){
+		      (new Thread(new CssSelectors())).start();
+		}
+ 
 
-       (new Thread(new CssSelectors())).start();
-
-	   test(driver1);
+	   
+		
+	}
+	public void run() {
+		try {
+			test((WebDriver) CssSelectors.drivers.pop());
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -39,6 +63,7 @@ public class CssSelectors implements Runnable{
 		
 	
 			driver.findElement(By.cssSelector("#searchbox")).sendKeys("tokyo");
+			
 			driver.findElement(By.tagName("body")).click();
 			driver.findElement(By.cssSelector("#date_picker_in_1")).click();
 			 boolean found = false;
@@ -75,14 +100,5 @@ public class CssSelectors implements Runnable{
 		
 	
 
-	public void run() {
-		InternetExplorerDriver driver = new InternetExplorerDriver();
-		try {
-			test(driver);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+	
 }
