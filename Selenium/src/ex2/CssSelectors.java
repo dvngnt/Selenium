@@ -19,28 +19,28 @@ import io.github.bonigarcia.wdm.MarionetteDriverManager;
 
 public class CssSelectors implements Runnable{
 
-	public static void main(String[] args){
-		//ChromeDriverManager.getInstance().setup();
-		//MarionetteDriverManager.getInstance().setup();
+	public static void main(String[] args) throws InterruptedException{
+		ChromeDriverManager.getInstance().setup();
+		MarionetteDriverManager.getInstance().setup();
 		InternetExplorerDriverManager.getInstance().setup();
-	//	ChromeDriver driver1 = new ChromeDriver();
-		InternetExplorerDriver driver = new InternetExplorerDriver();
+		MarionetteDriver driver1 = new MarionetteDriver();
 
-		test(driver);
-	//	test(driver1);
+       (new Thread(new CssSelectors())).start();
+
+	   test(driver1);
 		
 	}
 	
-	public static void test (WebDriver driver){
+	public static void test (WebDriver driver) throws InterruptedException{
 		driver.get("https://www.tripadvisor.com/");
-		driver.manage().window().maximize();
+		//driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		
 		
-		try {
-			driver.findElement(By.id("searchbox")).sendKeys("tokyo");
+	
+			driver.findElement(By.cssSelector("#searchbox")).sendKeys("tokyo");
 			driver.findElement(By.tagName("body")).click();
-			driver.findElement(By.id("date_picker_in_1")).click();
+			driver.findElement(By.cssSelector("#date_picker_in_1")).click();
 			 boolean found = false;
 			 String want = "October 2016";
 			 while(found == false){
@@ -59,10 +59,10 @@ public class CssSelectors implements Runnable{
 			 }
 			 if(found == true){
 				 driver.findElement(By.cssSelector(".day.day_3")).click();
-				 driver.findElement(By.id("date_picker_out_1")).click();
+				 driver.findElement(By.cssSelector("#date_picker_out_1")).click();
 				 found = false;
 				 driver.findElement(By.cssSelector(".day.day_10")).click();
-				 driver.findElement(By.id("SUBMIT_HOTEL")).click();
+				 driver.findElement(By.cssSelector("#SUBMIT_HOTEL")).click();
 
 				
 			
@@ -72,14 +72,17 @@ public class CssSelectors implements Runnable{
 		
 		
 		
-		catch (Exception e) {
-			System.out.println("it isn't working");
-		}
-	}
+		
+	
 
 	public void run() {
 		InternetExplorerDriver driver = new InternetExplorerDriver();
-		test(driver);
+		try {
+			test(driver);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 }

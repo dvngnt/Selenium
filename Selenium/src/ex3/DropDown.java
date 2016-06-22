@@ -6,15 +6,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+
+import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
 public class DropDown {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\dgantt2\\Downloads\\chromedriver.exe");
+		InternetExplorerDriverManager.getInstance().setup();
 
-		WebDriver driver = new ChromeDriver();
+		InternetExplorerDriver driver = new InternetExplorerDriver();
 		driver.get("http://www.rediff.com/");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);		

@@ -43,6 +43,7 @@ public class Date {
 				 found = false;
 				 driver.findElement(By.cssSelector(".day.day_10")).click();
 				 driver.findElement(By.id("SUBMIT_HOTEL")).click();
+				 driver.findElement(By.className("ui_close_x")).click();
 
 				
 			
