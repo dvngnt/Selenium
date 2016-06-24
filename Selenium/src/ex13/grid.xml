@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="SmokeSuite" parallel="methods" thread-count="2">
-	<test name ="Parallel Test 1">
+<suite name="SmokeSuite" parallel="tests" thread-count="2">
+	<test name ="Firefox" parallel="classes" thread-count="2">
 		<parameter name="myBrowser" value="firefox" /> 
 			<classes>
 				<class name="ex13.TestWebSite"></class>
 			</classes>
 	</test>
 	
-	<test name ="Parallel Test 2">
+	<test name ="Chrome" parallel="classes" thread-count="2">
 	<parameter name="myBrowser" value="chrome" /> 
 			<classes>
 				<class name="ex13.TestWebSite"></class>

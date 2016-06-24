@@ -17,12 +17,7 @@ import io.github.bonigarcia.wdm.ChromeDriverManager;
 public class BaseClass {
 	public static ThreadLocal <RemoteWebDriver> dr = new ThreadLocal<RemoteWebDriver>();
 	
-	@BeforeClass
-	public void setup(){
-		String path = System.getProperty("user.dir");
-    	System.setProperty("webdriver.chrome.driver", path + "\\chromedriver.exe");
-    	System.out.println(System.getProperty("webdriver.chrome.driver"));
-	}
+
   
 	
 	@BeforeMethod
@@ -31,15 +26,11 @@ public class BaseClass {
 		new WebDriverFactory();
 		RemoteWebDriver driver = null;
 		if(myBrowser.equals("chrome")){
-			String path = System.getProperty("user.dir");
-	    	System.setProperty("webdriver.chrome.driver", path + "\\chromedriver.exe");
-	    	System.out.println(System.getProperty("webdriver.chrome.driver"));
 			new DesiredCapabilities();
 			DesiredCapabilities capablity = DesiredCapabilities.chrome();
 			capablity.setBrowserName("chrome");
 			capablity.setPlatform(Platform.WINDOWS);
 			driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capablity);
-			System.out.println("made new chrome");
 			}
 		if(myBrowser.equals("firefox")){
 			new DesiredCapabilities();

@@ -3,7 +3,7 @@
 [
 {
 "browserName": "firefox",
-"maxInstances": 1
+"maxInstances": 2
 }
 ],
 "configuration":
